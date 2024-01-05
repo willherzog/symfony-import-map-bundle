@@ -1,0 +1,34 @@
+{
+	"name": "willherzog/symfony-import-map-bundle",
+	"description": "Some changes and additions to the importmap side of the Symfony AssetMapper component.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Will Herzog",
+            "email": "willherzog@gmail.com"
+        }
+    ],
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/willherzog/php-util"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/willherzog/twig-generic"
+		}
+	],
+    "require": {
+		"php": "^8.2",
+		"symfony/asset": "^6.4",
+		"symfony/asset-mapper": "^6.4",
+		"symfony/twig-bundle": "^6.4",
+		"twig/twig": "^2.12|^3.0",
+		"willherzog/php-util": "dev-main",
+		"willherzog/twig-generic": "dev-main"
+	},
+    "autoload": {
+        "psr-4": { "WHSymfony\\WHImportMapBundle\\": "src/" }
+    }
+}
