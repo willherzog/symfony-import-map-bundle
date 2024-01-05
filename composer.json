@@ -21,9 +21,9 @@
 	],
     "require": {
 		"php": "^8.2",
-		"symfony/asset": "^6.4",
-		"symfony/asset-mapper": "^6.4",
-		"symfony/twig-bundle": "^6.4",
+		"symfony/asset": "^6.4|^7.0",
+		"symfony/asset-mapper": "^6.4|^7.0",
+		"symfony/twig-bundle": "^6.4|^7.0",
 		"twig/twig": "^2.12|^3.0",
 		"willherzog/php-util": "dev-main",
 		"willherzog/twig-generic": "dev-main"
