@@ -136,14 +136,17 @@ class ImportMapRenderer implements RuntimeExtensionInterface
 
 		if( count($entryPoints) > 0 ) {
 			$output .= "<script type=\"module\"$scriptAttributes>";
+			$imports = [];
 
 			foreach( $entryPoints as $entryPointName ) {
 				$entryPointName = $this->escapeAttributeValue($entryPointName);
+				$entryPointName = str_replace("'", "\\'", $entryPointName);
 
-				$output .= "import '".str_replace("'", "\\'", $entryPointName)."';";
+				$imports[] = "import '$entryPointName';";
 			}
 
-			$output .= '</script>';
+
+			$output .= implode(' ', $imports) . '</script>';
 		}
 
 		return $output;
