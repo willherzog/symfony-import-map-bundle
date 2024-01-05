@@ -16,10 +16,10 @@ class ImportMapRenderer implements RuntimeExtensionInterface
 {
 	public function __construct(
 		protected readonly string $charset,
-		protected readonly string|false $polyfillImportName,
 		protected readonly ImportMapGenerator $importMapGenerator,
-		protected readonly array $scriptAttributes = [],
-		protected readonly ?Packages $assetPackages = null
+		protected readonly ?Packages $assetPackages = null,
+		protected readonly string|false $polyfillImportName = 'es-module-shims',
+		protected readonly array $scriptAttributes = []
 	) {}
 
 	protected function escapeAttributeValue(string $value): string

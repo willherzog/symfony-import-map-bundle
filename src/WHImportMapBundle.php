@@ -4,7 +4,6 @@ namespace WHSymfony\WHImportMapBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\abstract_arg;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\param;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
@@ -25,9 +24,7 @@ class WHImportMapBundle extends AbstractBundle
 			->set('whimportmap.renderer', ImportMapRenderer::class)
 				->args([
 					param('kernel.charset'),
-					abstract_arg('polyfill URL'),
 					service('asset_mapper.importmap.generator'),
-					abstract_arg('script HTML attributes'),
 					service('assets.packages')->nullOnInvalid()
 				])
 				->tag('twig.runtime')

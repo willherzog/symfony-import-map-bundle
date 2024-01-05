@@ -42,3 +42,8 @@ return [
     WHSymfony\WHImportMapBundle\WHImportMapBundle::class => ['all' => true],
 ];
 ```
+
+TODO
+====
+
+Figure out how to read original Symfony framework config for AssetMapper component.
