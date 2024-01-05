@@ -18,9 +18,7 @@ class ImportMapEntryPointsExtension extends AbstractExtension
 	public function getFunctions(): array
 	{
 		return [
-			new TwigFunction('add_script_entry_point', [EntryPointsManager::class, 'addEntryPoint']),
-
-			new TwigFunction('get_script_entry_points', [EntryPointsManager::class, 'getEntryPoints'])
+			new TwigFunction('add_script_entry_point', [EntryPointsManager::class, 'addEntryPoint'])
 		];
 	}
 }

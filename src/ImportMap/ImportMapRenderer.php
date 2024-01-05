@@ -7,6 +7,8 @@ use Symfony\Component\AssetMapper\ImportMap\ImportMapGenerator;
 
 use Twig\Extension\RuntimeExtensionInterface;
 
+use WHSymfony\WHImportMapBundle\ImportMap\EntryPointsManager;
+
 /**
  * Based on Symfony\Component\AssetMapper\ImportMap\ImportMapRenderer from the symfony/asset-mapper package.
  * Fixes some issues with the original class's ->render() method (since all its properties and methods were
@@ -17,6 +19,7 @@ class ImportMapRenderer implements RuntimeExtensionInterface
 	public function __construct(
 		protected readonly string $charset,
 		protected readonly ImportMapGenerator $importMapGenerator,
+		protected readonly EntryPointsManager $entryPointsManager,
 		protected readonly ?Packages $assetPackages = null,
 		protected readonly string|false $polyfillImportName = 'es-module-shims',
 		protected readonly array $scriptAttributes = []
@@ -51,8 +54,9 @@ class ImportMapRenderer implements RuntimeExtensionInterface
 		return $attributeString;
 	}
 
-	public function render(array $entryPoints, array $attributes = []): string
+	public function render(array $attributes = []): string
 	{
+		$entryPoints = $this->entryPointsManager->getEntryPoints();
 		$importMapData = $this->importMapGenerator->getImportMapData($entryPoints);
 		$importMap = [];
 		$modulePreloads = [];

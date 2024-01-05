@@ -21,16 +21,17 @@ class WHImportMapBundle extends AbstractBundle
 	public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
 	{
 		$container->services()
+			->set('whimportmap.entrypoints.manager', EntryPointsManager::class)
+				->args([service('asset_mapper.importmap.config_reader')])
+				->tag('twig.runtime')
+
 			->set('whimportmap.renderer', ImportMapRenderer::class)
 				->args([
 					param('kernel.charset'),
 					service('asset_mapper.importmap.generator'),
+					service('whimportmap.entrypoints.manager'),
 					service('assets.packages')->nullOnInvalid()
 				])
-				->tag('twig.runtime')
-
-			->set('whimportmap.entrypoints.manager', EntryPointsManager::class)
-				->args([service('asset_mapper.importmap.config_reader')])
 				->tag('twig.runtime')
 
 			->set('whimportmap.twig.importmap_renderer_extension', ImportMapRendererExtension::class)
