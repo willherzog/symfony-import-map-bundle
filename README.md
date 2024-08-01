@@ -1,4 +1,4 @@
-# Symfony Import Map Bundle
+# WHImportMapBundle
  Some changes and additions to the importmap side of Symfony's AssetMapper component.
 
 ## Installation
