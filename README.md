@@ -1,4 +1,4 @@
-# symfony-import-map-bundle
+# Symfony Import Map Bundle
  Some changes and additions to the importmap side of Symfony's AssetMapper component.
 
 Installation
