@@ -39,6 +39,11 @@ class EntryPointsManager implements RuntimeExtensionInterface
 		}
 	}
 
+	public function haveEntryPoints(): bool
+	{
+		return $this->entryPointsForPage !== [];
+	}
+
 	public function getEntryPoints(): array
 	{
 		return $this->entryPointsForPage;
