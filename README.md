@@ -40,6 +40,25 @@ return [
 ];
 ```
 
-## TODO
+## Usage
 
-Figure out how to read original Symfony framework config for AssetMapper component.
+First, make one or more calls to `add_script_entry_point()` in your Twig template(s). Then, output the `wh_importmap()` function (instead of using the Symfony `importmap()` function). For example:
+
+```twig
+<head>
+{# ... #}
+{% do add_script_entry_point('app') %}
+{% block scripts %}{# Extending templates can override this block to add their own entry point scripts. #}{% endblock %}
+{{ wh_importmap() }}
+</head>
+```
+
+If, however, you don't always have at least one entry point script, you can use the `have_script_entry_points()` function*:
+
+```twig
+{% if have_script_entry_points() %}
+    {{~ wh_importmap() }}
+{% endif %}
+```
+
+\* It's safe to output `wh_importmap()` even if there are no entry point scripts; the only reason not to is to reduce unnecessary HTML.
